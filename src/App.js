@@ -1,4 +1,3 @@
-// src/App.js
 import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 
