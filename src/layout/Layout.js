@@ -7,12 +7,14 @@ const Layout = () => {
   return (
     <div id="app">
       <Header />
-        <GnbDesktop />
+      {/* 데스크탑일 때  */}
+        <GnbDesktop /> 
       <main>
         <Outlet />
       </main>
       
       <Footer/>
+      {/* 모바일일 때 아래 탭 */}
         <GnbMobile />
     </div>
   );
