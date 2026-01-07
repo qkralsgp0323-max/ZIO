@@ -1,0 +1,38 @@
+@use "../../../assets/scss/fonts" as *;
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+// 모바일 하단에 뜨는 주차장 정보
+.parking-card {
+  position: sticky;  
+  bottom: 60px;         
+  z-index: 5;
+  margin: 0 2rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  &-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 1rem;
+    background: $color-555;
+  }
+
+  &-texts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &-name {
+    @include body-b();
+  }
+
+  &-addr {
+    @include caption-r();
+  }
+}

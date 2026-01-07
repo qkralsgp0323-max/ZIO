@@ -1,7 +1,16 @@
-const ReservationInfo = () => {
-  return (
-    <div className="reserve-info">ReservationInfo</div>
-  )
-}
+import "./ReservationInfo.scss"; 
 
-export default ReservationInfo
+const ReservationInfo = () => {
+
+  return (
+    <div className="parking-card">
+      <div className="parking-card-img" />
+      <div className="parking-card-texts">
+        <p className="parking-card-name">주차장 이름</p>
+        <p className="parking-card-addr">주차장 주소</p>
+      </div>
+    </div>
+  );
+};
+
+export default ReservationInfo;

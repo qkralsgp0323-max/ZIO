@@ -1,0 +1,71 @@
+@use "../../../assets/scss/fonts" as *;
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+/* 전체 맵 */
+.parking-map {
+  position: relative;
+  @include flex-layout();
+  background:$color-555;
+  padding:16px 0;
+  .parking-direction {
+  position:absolute;
+  top:2rem;
+  left:50%;
+  transform:translateX(-50%);
+  color:$color-sub;
+  text-align:center;
+}
+  .lane {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-top:26px;
+  
+.lane-left { margin-right:16px; }
+.lane-right { margin-left:16px; }
+.parking-box {
+  width:110px;
+  height:60px;
+  border-radius:6px;
+  border:4px solid #e3f4ff;
+  background:$color-555;
+  cursor:pointer;
+  @include flex-layout();
+  .box-code {
+  @include caption-b();
+  color:$color-white;
+}
+
+}
+}
+.road { width:36px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box-일반   { border-color:$color-white; }
+.box-장애인 { border-color:$color-yellow; }
+.box-경차   { border-color:#FF5E5E; }
+.box-전기차 { border-color:$color-green; }
+
+
+.selected {
+  background:$color-red;
+}
+
+.selected .box-code {
+  color:$color-white;
+}

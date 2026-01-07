@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
-
 import MainPage from "./pages/MainPage";
 import ReservationPage from "./pages/ReservationPage";
 import PaymentPage from "./pages/PaymentPage";
@@ -8,12 +7,14 @@ import MyPage from "./pages/MyPage";
 import Tip from "./pages/Tip";
 
 import "./App.scss";
+import DetailPage from "./pages/DetailPage";
 
 const App = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<MainPage />} />
+        <Route path="/detail" element={<DetailPage />} />
 
         <Route path="/parking/:parkingId" element={<ReservationPage />} />
 
