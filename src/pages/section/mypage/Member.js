@@ -2,7 +2,6 @@ import { FaUserCircle } from "react-icons/fa";
 import Ad from "../payment/Ad"
 
 
-
 const Member = () => {
   return (
     <div className="member-wrap">
