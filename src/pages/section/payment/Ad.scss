@@ -16,21 +16,26 @@
     img {
       width: 100px;
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
       &:nth-child(1) {
-        background-color: red;
-        top: 10%;
+        bottom: 1rem;
+        left: 1rem;
       }
       &:nth-child(2) {
-        background-color: blue;
+        bottom: 0.5rem;
+        left: 6rem;
       }
     }
   }
   .ad-txt {
     width: 50%;
     height: inherit;
+    position: relative;
     p {
+      position: absolute;
+      top: 2rem;
+      right: 0.5rem;
       text-align: right;
       @include flex-layout($just:flex-end, $align:flex-start);
       @include caption-r;

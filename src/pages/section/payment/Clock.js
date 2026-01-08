@@ -1,33 +1,37 @@
-import React from 'react'
+import { useState } from 'react'
+import DatePicker from 'react-datepicker';
+import "./Clock.scss";
 
 const Clock = () => {
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(null);
-
-  // const handleChangeTime = (date, time) => {
-  //   const [hh, mm, ss] = time.split(":");
-  //   const targetDate = date instanceof Date && !isNaN(date) ? date : new Date();
-  //   targetDate.setHours(Number(hh) || 0, Number(mm) || 0, Number(ss) || 0);
-  //   setStartDate(targetDate);
-  // };
+  const [selectedTime, setSelectedTime] = useState(
+    new Date()
+  );
 
   return (
-    <div className='clock'>
+    <div id='clock'>
       <div className='in-time'>
         <p>입차 시간</p>
-        {/* <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          timeInputLabel="Time:"
-          dateFormat="h:mm:ss"
-          showTimeInput
+        <DatePicker
+          selected={selectedTime}
+          onChange={setSelectedTime}
+          showTimeSelect
           showTimeSelectOnly
-          customTimeInput={<CustomTimeInput onChangeCustom={handleChangeTime} />}
-          inline
-        /> */}
+          timeIntervals={60}
+          timeCaption="입차시간"
+          dateFormat="h:mm aa"
+        />
       </div>
       <div className='out-time'>
         <p>출차 시간</p>
+        <DatePicker
+          selected={selectedTime}
+          onChange={setSelectedTime}
+          showTimeSelect
+          showTimeSelectOnly
+          timeIntervals={60}
+          timeCaption="입차시간"
+          dateFormat="h:mm aa"
+        />
       </div>
     </div>
   )
