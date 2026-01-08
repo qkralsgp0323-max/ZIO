@@ -1,17 +1,77 @@
 @use "../../assets/scss/fonts" as *;
 @use "../../assets/scss/variables" as *;
 @use "../../assets/scss/mixins" as *;
-.popup {
+.popup-overlay{
+    position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  opacity: 0;
+  transition: opacity 260ms ease, background 260ms ease;
+  z-index: 9998;
+   &.is-open {
+    opacity: 1;
+  }
+
+ .popup {
   position: fixed;
-  left: 50%;
-  
-  transform: translateX(-50%);
-    top: 60%;
-    height: 30vh;
-  width: 100%;
-  max-width: 420px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 90%;
+  max-width: 520px;          // 중앙형 sheet 원하면 유지
+  margin: 0 auto;            // 가운데 정렬
+  height: 40vh;              // 필요에 맞게
   background: #fff;
-  border-radius: 16px;
+  border-radius: 16px 16px 0 0;
   padding: 16px;
+
+  transform: translateY(100%); // ⭐️ 화면 아래에 숨김
+  opacity: 1;
+  transition: transform 260ms ease;
   z-index: 9999;
+  backface-visibility: hidden;
+  will-change: transform;
+
+  &.is-open {
+    transform: translateY(-18%); // ⭐️ 위로 올라옴
+  }
 }
+}
+
+/* X 버튼 더 오른쪽 끝 */
+.popup-close {
+  position: absolute;
+  right: 10px; // 더 오른쪽으로 붙음
+  top: 10px;
+  padding: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* 내용 */
+.popup-content {
+  width: 100%;
+  margin-top: 20px; // X랑 겹치지 않게
+}
+
+.popup-list {
+  li {
+    cursor: pointer;
+    @include flex-layout(row,left);
+  }
+}
+.thumb {   width: 120px;   
+  height: 120px;   
+  border-radius: 12px;   
+  object-fit: cover; // 핵심: 정사각 유지 + 꽉 채움   
+  flex: 0 0 120px; }  
+  
+  .meta .title { font-weight: 600; } 
+  
+  .meta .addr { color: #777; }
+
+
