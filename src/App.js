@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
-
 import MainPage from "./pages/MainPage";
 import ReservationPage from "./pages/ReservationPage";
 import PaymentPage from "./pages/PaymentPage";
@@ -13,6 +12,7 @@ import { ParkingProvider } from "./contexts/ParkingContext";
 import { ReservationProvider } from "./contexts/ReservationContext";
 
 import "./App.scss";
+import DetailPage from "./pages/DetailPage";
 
 const App = () => {
   return (

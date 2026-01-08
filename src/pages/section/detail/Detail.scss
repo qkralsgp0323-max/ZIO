@@ -1,0 +1,87 @@
+@use "../../../assets/scss/fonts" as *;
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+.detail-page {
+  position: relative;
+  min-height: 100vh;
+      background: $color-555;
+  .detail-page-map{
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+    .parking-scroll {
+  flex: 1;
+  overflow-y: auto;
+  @include flex-layout();
+}
+  }
+  .reserve-popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(6px);
+  @include flex-layout();
+  padding: 2rem;
+  z-index: 50;
+}
+
+/* 팝업 박스 */
+.reserve-popup {
+  @include caption-r();
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 1.4rem;
+  background: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+.reserve-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.reserve-popup-body {
+  @include flex-layout("","",$align:space-between);
+  flex-direction: column;
+  margin-top: 0.5rem;
+  .reserve-select-info{
+    @include flex-layout("",$just:space-between);
+    padding: 0.5rem;
+    .reserve-type{
+      margin-right: 1rem;
+    }
+  }
+  .reserve-info-code{
+    .reserve-type{
+      @include caption-b();
+    }
+    .reserve-code{
+      @include title-b();
+    }
+  }
+  .select-name{
+    display: flex;
+    justify-content: space-between;
+  }
+.reserve-info-name {
+  @include caption-b();
+  margin-bottom: 0.2rem;
+}
+.reserve-popup-button {
+  @include btn-theme();
+  margin-top: 2px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+}
+}

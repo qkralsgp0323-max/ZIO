@@ -1,0 +1,59 @@
+@use "../../../assets/scss/fonts" as *;
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+.parking-map {
+  position: relative;
+  @include flex-layout();
+  background: $color-555;
+  padding: 1rem 0;
+
+  .parking-direction {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $color-sub;
+    text-align: center;
+  }
+
+  .lane {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 26px;
+
+    &.lane-left  { margin-right: 16px; }
+    &.lane-right { margin-left: 16px; }
+
+    .parking-box {
+      padding: 1rem 2rem;
+      border-radius: 0.4rem;
+      background: $color-555;
+      cursor: pointer;
+      @include flex-layout();
+
+      .box-code {
+        @include caption-b();
+        color: $color-white;
+      }
+    }
+
+    .parking-box.box-일반   { border: 4px solid $color-white; }
+    .parking-box.box-장애인 { border: 4px solid $color-yellow; }
+    .parking-box.box-경차   { border: 4px solid #FF5E5E; }
+    .parking-box.box-전기차 { border: 4px solid $color-green; }
+
+    .parking-box.selected {
+      background: $color-red;
+    }
+
+    .parking-box.selected .box-code {
+      color: $color-white;
+    }
+  }
+
+  .road {
+    width: 2rem;
+  }
+}
