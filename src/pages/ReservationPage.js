@@ -7,7 +7,7 @@ const ReservationPage = () => {
 
   return (
     <div className="reservation-page">
-      {/* 회원이 아닐 경우 게스트(비회원) 모드로 넘어가게 끔 함-> 비회원은 팝업이 먼저 떠야함 */}
+      {/* 회원이 아닐 경우 게스트(비회원) 모드로 넘어가게함-> 비회원은 팝업이 먼저 */}
       {authType === "user" ? <MemberReservation /> : <GuestReservation />}
     </div>
   );
