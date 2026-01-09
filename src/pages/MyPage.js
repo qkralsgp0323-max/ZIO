@@ -22,8 +22,8 @@ export default function MyPage() {
    * - return authType === "user" ? <Member/> : <NonMember/> 만 남기기
    */
 
-  // return authType === "user" ? <Member/> : <NonMember/>
-  return <Member/>
+  return authType === "user" ? <Member/> : <NonMember/>
+  // return <Member/>
 
   // const [devIsMember, setDevIsMember] = useState(true);
 

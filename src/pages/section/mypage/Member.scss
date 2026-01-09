@@ -7,6 +7,11 @@
     margin: 0 3rem;
     @include respond();
     height: 150vh;
+    max-width: 600px;
+    @media (min-width:788px) {
+        margin: auto;
+    }
+
 
     .user {
         .information {
@@ -47,7 +52,7 @@
                 }
 
                 .car-btn {
-                    @include btn-theme();
+                    @include btn-theme($hover-bg: #D4FFA4);
                     width: 7rem;
                 }
 
