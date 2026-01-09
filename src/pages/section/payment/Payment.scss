@@ -1,3 +1,22 @@
 @use "../../../assets/scss/variables" as *;
 @use "../../../assets/scss/fonts" as *;
 @use "../../../assets/scss/mixins" as *;
+
+
+section.pay-box{
+  background-color: $color-bbb;
+  width: 80%;
+  margin: 1rem auto;
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;  
+  button{
+    background-color: #fff;
+    border-radius: 10px;
+    border: 0.5px solid $color-sub;
+    outline: none;
+    height: 36px;
+    line-height: 36px;    
+  }
+}
