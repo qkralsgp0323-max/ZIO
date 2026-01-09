@@ -8,6 +8,7 @@
   background-color: $color-sub;
   border-radius: 1rem;
   padding: 1rem;
+  z-index: -1;
   @include flex-layout();
   .car-img {
     width: 50%;
@@ -37,7 +38,6 @@
       top: 2rem;
       right: 0.5rem;
       text-align: right;
-      z-index: 99;
       @include flex-layout($just:flex-end, $align:flex-start);
       @include caption-r;
     }

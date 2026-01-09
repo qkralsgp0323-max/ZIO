@@ -1,0 +1,12 @@
+@use "../assets/scss/variables" as *;
+@use "../assets/scss/mixins" as *;
+
+.tip-page{
+  width: 100%;
+  height: 100vh;
+  background-color: $color-white;
+  .tip-list{
+    width: 80%;
+    margin: 0 auto;
+    }
+}

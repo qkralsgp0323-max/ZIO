@@ -1,24 +1,33 @@
+import { useEffect, useState } from "react";
+import { useParking } from "../../../contexts/ParkingContext";
+
 import "./ReservationDetail.scss";
 const sortBySpaceCode = (a, b) => {
-  const [aPrefix, aNum] = a.space_code.split("-");
-  const [bPrefix, bNum] = b.space_code.split("-");
+  const [aPrefix, aNum] = (a.space_code || "").split("-");
+  const [bPrefix, bNum] = (b.space_code || "").split("-");
 
-  // A/B 같은 구역끼리만 비교한다고 가정하면, prefix 비교는 없어도 됨
   if (aPrefix === bPrefix) {
     return Number(aNum) - Number(bNum); // 숫자 기준 정렬
   }
   return aPrefix.localeCompare(bPrefix);
 };
-const ReservationDetail = ({ spaces, selectedCode, onSelect }) => {
-  const laneA = spaces.filter((space) =>
-    space.space_code.startsWith("A-"))
-   .sort(sortBySpaceCode);
-  
-  const laneB = spaces.filter((space) =>
-    space.space_code.startsWith("B-"))
-   .sort(sortBySpaceCode);
+const ReservationDetail = ({ selectedCode, onSelect }) => {
+  const{ spaces, isSpaceTaken,fetchLotDetailAll}= useParking();
+  // useEffect(() => {
+  //   const lotId = selectedId || "HG_01";
+  //   fetchLotDetailAll(lotId);
+  // }, [fetchLotDetailAll, selectedId]);
+  const [laneA, setLaneA] = useState([]);
+  const [laneB, setLaneB] = useState([]);
 
-
+  useEffect(()=>{
+    fetchLotDetailAll("HG_01");
+    console.log( "spaces==>", spaces );
+    const arrA = spaces.filter((item) => (item.space_code || "").startsWith("A-")).slice().sort(sortBySpaceCode);
+    const arrB = spaces.filter((item) => (item.space_code || "").startsWith("B-")).slice().sort(sortBySpaceCode);
+    setLaneA(arrA);
+    setLaneB(arrB);
+  },[]);
   return (
     <div className="parking-map">
       <span className="parking-direction">
@@ -26,14 +35,18 @@ const ReservationDetail = ({ spaces, selectedCode, onSelect }) => {
       </span>
 
       <div className="lane lane-left">
-        {laneA.map((space) => {
+        {laneA?.map((space) => {
           const isSelected = space.space_code === selectedCode;
+
+          const takenStatus = isSpaceTaken?.(space.id); 
+          const isTaken = Boolean(takenStatus);
 
           const classes = [
             "parking-box",
             `box-${space.space_type}`, // 전기차/경차/장애인/일반 분리용
             isSelected ? "selected" : "",
             !space.is_active ? "disabled" : "",
+            isTaken ? "taken" : "",
           ]
             .filter(Boolean)
             .join(" ");
@@ -43,6 +56,8 @@ const ReservationDetail = ({ spaces, selectedCode, onSelect }) => {
               key={space.id}
               className={classes}
               onClick={() => onSelect(space)}
+              disabled={!space.is_active || isTaken}
+              data-status={takenStatus || ""} 
             >
               <span className="box-code">{space.space_code}</span>
             </button>
@@ -53,14 +68,17 @@ const ReservationDetail = ({ spaces, selectedCode, onSelect }) => {
       <div className="road" />
 
       <div className="lane lane-right">
-        {laneB.map((space) => {
+        {laneB?.map((space) => {
           const isSelected = space.space_code === selectedCode;
 
+          const takenStatus = isSpaceTaken?.(space.id);
+          const isTaken = Boolean(takenStatus);
           const classes = [
             "parking-box",
             `box-${space.space_type}`,
             isSelected ? "selected" : "",
             !space.is_active ? "disabled" : "",
+            isTaken ? "taken" : "",
           ]
             .filter(Boolean)
             .join(" ");
@@ -70,6 +88,9 @@ const ReservationDetail = ({ spaces, selectedCode, onSelect }) => {
               key={space.id}
               className={classes}
               onClick={() => onSelect(space)}
+              disabled={!space.is_active || isTaken}
+              aria-disabled={!space.is_active || isTaken}
+              data-status={takenStatus || ""}
             >
               <span className="box-code">{space.space_code}</span>
             </button>
@@ -77,7 +98,10 @@ const ReservationDetail = ({ spaces, selectedCode, onSelect }) => {
         })}
       </div>
     </div>
+
+    
   );
 };
+
 
 export default ReservationDetail;

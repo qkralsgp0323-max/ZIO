@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+// import { useParking } from "../../../contexts/ParkingContext";
 import ReservationDetail from "./ReservationDetail";
-import ReservationInfo from "./ReservationInfo";
+// import ReservationInfo from "./ReservationInfo";
 import "./Detail.scss";
 
 import { getDetailInfo, getParkingSpace } from "../../../api/zioApi";
+import Detailbar from "./Detailbar";
 
 const LOT_ID = "SUWON_01";
 
@@ -107,19 +109,14 @@ const DetailContainer = () => {
         {/* 왼쪽 주차 좌석 영역 */}
         <div className="parking-scroll">
           <ReservationDetail
-            spaces={spaces}
+            spaces={setSpaces}
             selectedCode={selectedBox?.space_code}
             onSelect={handleSelectBox}
           />
+          <Detailbar/>
         </div>
 
         {/* 데스크탑일 때 */}
-        <ReservationInfo
-          lot={lot}
-          selectedBox={selectedBox}
-          onReserve={handleReserve}
-          isMobile={isMobile}
-        />
       </section>
 
       {/* 모바일에서만 팝업 */}
@@ -160,6 +157,7 @@ const DetailContainer = () => {
         </div>
       )}
     </div>
+    
   );
 };
 
