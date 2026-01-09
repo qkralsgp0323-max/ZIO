@@ -72,8 +72,8 @@ export const ParkingProvider = ({children}) => {
       ])
       setLotDetail(detail || null);
       setSpaces(spaceList || []);
-      setParked(parkedList || []);
-
+      console.log( "spaceList=>", spaceList );
+      setParked(parkedList || []);      
       return {detail, spaceList, parkedList}
     } catch (error) {
       setError(error.message);

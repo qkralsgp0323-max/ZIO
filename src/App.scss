@@ -1,7 +1,7 @@
 @use "./assets/scss/fonts" as *;
 @use "./assets/scss/variables" as *;
 @use "./assets/scss/mixins" as *;
-*{margin: 0;padding: 0;box-sizing: none;}
+*{margin: 0;padding: 0;}
 .mainpage{
     width: 100%;
     .search{
@@ -40,10 +40,23 @@
 // layout -sec3 처리 
 .layout-main {
   width: 100%;
-  display: block;
+  @include flex-layout("","",stretch,"");
   padding: 0;
+  .sec1{
+    display: none;
+    flex: 0 0 240px;
+    width: 240px;
+    min-width: 240px;
+  }
+  .layout-outlet {
+      flex: 1 1 auto;      
+      min-width: 0;         
+    }
   .sec3 {
     display: none;
+    flex: 0 0 360px;
+    width: 360px;
+    min-width: 360px;
   }
 }
 
@@ -53,6 +66,9 @@
     @include flex-layout(row,center,center,none);
     .layout-outlet {
     min-width: 0;
+  }
+  .sec1{
+    display: inline-block;
   }
      .sec3 {
     display: inline-block;
