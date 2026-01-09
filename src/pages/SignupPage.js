@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
+import './SignupPage.scss';
+
 const normalizePhone = (value) => {
   const digits = String(value || "").replace(/[^0-9]/g, "");
   if (digits.length === 11) return `${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`;
@@ -26,7 +28,7 @@ const SignupPage = () => {
       await signUpUsers({
         userId: userId.trim(),
         password: password.trim(),
-        phone: normalizePhone(phone),         // 저장형식 통일
+        phone: normalizePhone(phone),   // 저장형식 통일
         email: email.trim(),
         carNum: normalizeCarNum(carNum),      // 공백 제거
       });
@@ -41,60 +43,58 @@ const SignupPage = () => {
     <div className="signup-page">
       <h2>회원가입</h2>
 
-      <div>
-        <label>아이디</label>
-        <input
-          placeholder="영문으로 입력해주세요."
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-        />
+      <div className="form">
+        <div className="inputData">
+          <label>아이디</label>
+          <input
+            placeholder="영문으로 입력해주세요."
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+          />
+        </div>
+
+        <div className="inputData">
+          <label>비밀번호</label>
+          <input
+            placeholder="영문과 숫자 조합으로 입력해주세요"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className="inputData">
+          <label>연락처</label>
+          <input
+            placeholder="010-xxxx-xxxx"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
+
+        <div className="inputData">
+          <label>이메일</label>
+          <input
+            type="text"
+            placeholder="example@text.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div className="inputData">
+          <label>차량 번호</label>
+          <input
+            type="text"
+            placeholder="공백없이 입력해주세요."
+            value={carNum}
+            onChange={(e) => setCarNum(e.target.value)}
+          />
+        </div>
+
+        <button className="submit-btn" onClick={handleSignup} disabled={loading}>
+          {loading ? "회원가입 중..." : "회원가입"}
+        </button>
       </div>
-
-      <div>
-        <label>비밀번호</label>
-        <input
-          placeholder="영문과 숫자 조합으로 입력해주세요"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label>연락처</label>
-        <input
-          placeholder="'-' 없이 숫자만 입력해주세요."
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label>이메일</label>
-        <input
-          type="text"
-          placeholder="예 : example@text.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label>차량 번호</label>
-        <input
-          type="text"
-          placeholder="공백없이 입력해주세요."
-          value={carNum}
-          onChange={(e) => setCarNum(e.target.value)}
-        />
-      </div>
-
-      <button onClick={handleSignup} disabled={loading}>
-        {loading ? "회원가입 중..." : "회원가입 완료"}
-      </button>
-
-      <button onClick={() => navigate(-1)}>
-        뒤로
-      </button>
     </div>
   );
 };

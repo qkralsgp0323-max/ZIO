@@ -1,0 +1,29 @@
+@use "../assets/scss/variables" as *;
+@use "../assets/scss/mixins" as *;
+.tip-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.tip-title {
+  @include flex-layout(row, center, center, 0.5rem);
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.tip-icon {
+  font-size: 18px; 
+  line-height: 1;
+}
+
+.tip-text {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: $color-555;
+}
