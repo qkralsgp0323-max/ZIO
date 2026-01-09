@@ -35,3 +35,30 @@
     }
 }
 }
+
+
+// layout -sec3 처리 
+.layout-main {
+  width: 100%;
+  display: block;
+  padding: 0;
+  .sec3 {
+    display: none;
+  }
+}
+
+@include respond {
+  .layout-main {
+
+    @include flex-layout(row,center,center,none);
+    .layout-outlet {
+    min-width: 0;
+  }
+     .sec3 {
+    display: inline-block;
+    width: 100%;
+    max-width: 360px;
+    justify-self: end;
+  }
+  }
+}
