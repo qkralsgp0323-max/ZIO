@@ -12,8 +12,8 @@ const Member = () => {
 
   // AuthContext에서 현재 로그인한 회원정보
   const { user, authType } = useAuth();
-  // const userId = user?.id;
-  const userId = '이서연';
+  const userId = user?.id;
+  // const userId = '이서연';
 
 
   // DB에서 가져온 프로필 (users) / 이용내역 (reservation)
@@ -69,8 +69,8 @@ const Member = () => {
 
         // 프로필 + 이용내역 병렬 호출
         const [p, h] = await Promise.all([
-          // getProfile(userId),            // users 테이블
-          getProfile('이서연'),            // users 테이블
+          getProfile(userId),            // users 테이블
+          // getProfile('이서연'),            // users 테이블
           getLittleReservation(userId),  // reservation 테이블 (최대 5개)
         ]);
 
