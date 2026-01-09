@@ -9,11 +9,11 @@
         overflow: visible;
         
         .input{
-            position: fixed;
+            position: relative;
             transition: transform 0.3s ease;
             text-align: center;
-            bottom: 0;
-            transform: translateY(-90px);
+            transform: translateY(-300%);
+            @include flex-layout(row,center);
             width: 200px;
             z-index: 9999; // 지도 위로
             padding: 0.5rem;
@@ -52,11 +52,6 @@
       flex: 1 1 auto;      
       min-width: 0;         
     }
-}
-
-// layout -sec3 처리 
-.layout-main {
-  width: 100%;
   .sec3 {
     display: none;
     flex: 0 0 360px;
@@ -81,15 +76,5 @@
     max-width: 360px;
     justify-self: end;
   }
-}
-
-@media (max-width: 767px) {
-  .layout-main {
-    display: block;
-    padding: 0;
-  }
-
-  .sec3 {
-    display: none;
   }
 }
