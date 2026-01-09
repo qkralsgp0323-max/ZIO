@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReservationDetail from "./ReservationDetail";
-import ReservationInfo from "./ReservationInfo";
+// import ReservationInfo from "./ReservationInfo";
 import "./Detail.scss";
 
 import { getDetailInfo, getParkingSpace } from "../../../api/zioApi";
@@ -114,12 +114,6 @@ const DetailContainer = () => {
         </div>
 
         {/* 데스크탑일 때 */}
-        <ReservationInfo
-          lot={lot}
-          selectedBox={selectedBox}
-          onReserve={handleReserve}
-          isMobile={isMobile}
-        />
       </section>
 
       {/* 모바일에서만 팝업 */}
